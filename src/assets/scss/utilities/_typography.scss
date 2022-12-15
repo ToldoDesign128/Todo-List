@@ -1,0 +1,49 @@
+// _typography.scss
+
+@import 'https://fonts.googleapis.com/css?family=Poppins';
+
+$primary-font: 'Poppins', sans-serif;
+
+h1 {
+    font-weight: 300;
+    font-size: 93px;
+    letter-spacing: -1.5px;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 58px;
+    letter-spacing: -0.5px;
+}
+
+h3 {
+    font-weight: 400;
+    font-size: 46px;
+}
+
+h4 {
+    font-weight: 400;
+    font-size: 33px;
+    letter-spacing: 0.25px;
+}
+
+h5 {
+    font-weight: 400;
+    font-size: 23px;
+}
+
+h6 {
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.15px;
+}
+
+p,
+a,
+ul,
+ol,
+li {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
