@@ -1,0 +1,23 @@
+{
+  "name": "todo-list",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.10.2",
+    "bootstrap-icons-vue": "^1.8.1",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "eslint": "^8.29.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "sass": "^1.56.2",
+    "vite": "^4.0.0"
+  }
+}
