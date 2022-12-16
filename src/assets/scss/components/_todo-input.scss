@@ -1,6 +1,7 @@
 // _todo-input.scss
 
 .container{
+    margin-top: 50px;
     padding: 10px;
     width: calc(100% - 20px);
     min-height: calc(100% - 20px);
@@ -12,9 +13,13 @@
         justify-content: center;
         align-items: center;
         color: $color;
-        font-size: 1.6rem;
         margin: 0 15px;
         cursor: pointer;
+
+        svg{
+            width: 1.4rem;
+            height: 1.4rem;
+        }
     }
 
     i{
@@ -30,7 +35,7 @@
         width: 100%;
         height: 60px;
         background: rgba($color: #000000, $alpha: .3);
-        border-radius: 5px;
+        border-radius: 100px;
         overflow: hidden;
 
         .add-icon{
@@ -39,9 +44,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
-            font-size: 2rem;
+            color: $title-color;
             cursor: pointer;
+
+            svg{
+                width: 1.4rem;
+                height: 1.4rem;
+            }
         }
 
         input{
@@ -51,11 +60,12 @@
             border: none;
             width: 100%;
             height: 60px;
-            color: #fff;
-            font-size: 1.6rem;
+            color: $title-color;
+            font-size: 1.4rem;
 
             &::placeholder{
-                color: #fff;
+                color: $text-color;
+                font-size: 1rem;
             }
 
             &:focus{
@@ -64,7 +74,7 @@
         }
 
         .feature-icon{
-            @include feature-icon(#fff)
+            @include feature-icon($title-color)
         }
     }
 
@@ -76,9 +86,11 @@
             grid-template-columns: 70px auto 70px;
             grid-template-rows: 60px;
             width: 100%;
-            height: 60px;
-            margin-bottom: 2px;
-            background: rgba($color: #fff, $alpha: .8);
+            height: auto;
+            min-height: 60px;
+            padding: 12px 0;
+            margin-bottom: 5px;
+            background: rgba($color: $title-color, $alpha: .8);
             border-radius: 5px;
             overflow: hidden;
             opacity: 0;
@@ -90,9 +102,13 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #99C191;
-                font-size: 1.6rem;
+                color: $dark-primary-color;
                 cursor: pointer;
+
+                svg{
+                    width: 1.4rem;
+                    height: 1.4rem;
+                }
             }
 
             .item-title{
@@ -105,7 +121,7 @@
             }
 
             .feature-icon{
-                @include feature-icon(#333)
+                @include feature-icon($light-primary-color)
             }
         }
 
@@ -117,15 +133,15 @@
     .complete-list{
         .item{
             position: relative;
-            background: rgba($color: #fff, $alpha: .4);
+            background: rgba($color: $title-color, $alpha: .4);
 
             &::before{
                 content: '';
                 position: absolute;
-                top: 30px;
+                top: 42px;
                 width: calc(100% - 120px);
                 margin: 0 60px;
-                border-bottom: 2px solid #555;
+                border-bottom: 2px solid $light-primary-color;
             }
         }
     }
@@ -137,20 +153,33 @@
         padding-top: 20px;
 
         .button{
-            color: #fff;
-            padding: 10px;
-            font-size: 1.3rem;
+            color: $text-color;
+            padding: 10px 20px;
+            font-size: 1rem;
             text-transform: uppercase;
-            background: rgba($color: #000000, $alpha: .3);
-            border-radius: 5px;            
+            background: rgba($color: $title-color, $alpha: .3);
+            border-radius: 100px;            
             overflow: hidden;
             cursor: pointer;
+            transition: all .5s linear;
+
+            &:hover{
+                color: $primary-color;
+                background: rgba($color: $title-color, $alpha: .7);
+            }
+
+            &:focus{
+                color: $primary-color;
+                background: rgba($color: $title-color, $alpha: .7);
+            }
         }
 
     }
 
     .red-bg{
-        background-color: red;
-        color: #fff !important;
+
+        svg{
+            fill: $secondary-color;
+        }
     }
 }

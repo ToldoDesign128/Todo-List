@@ -1,30 +1,37 @@
 <template>
     <div class="container">
-        <div class="add-item">
-            <div class="add-icon" @click="addItem">
-                <i>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg>
-                </i>
+        <transition
+            appear
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            >
+            <div class="add-item">
+                <div class="add-icon" @click="addItem">
+                    <i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </i>
+                </div>
+                <form @submit.prevent="addItem">
+                    <input type="text" placeholder="Aggiungi qualcosa da fare..." v-model="entry">
+                </form>
+                <div class="feature-icon" :class="{'red-bg' : entryFavorite}">
+                    <i v-if="!entryFavorite" @click="entryFavorite = !entryFavorite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                    </i>
+                    <i v-else class="bi bi-star" @click="entryFavorite = !entryFavorite">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                        </svg>
+                    </i>
+                </div>
             </div>
-            <form @submit.prevent="addItem">
-                <input type="text" placeholder="Aggiungi qualcosa da fare..." v-model="entry">
-            </form>
-            <div class="feature-icon" :class="{'red-bg' : entryFavorite}">
-                <i v-if="!entryFavorite" @click="entryFavorite = !entryFavorite">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                    </svg>
-                </i>
-                <i v-else class="bi bi-star" @click="entryFavorite = !entryFavorite">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
-                    <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                    </svg>
-                </i>
-            </div>
-        </div>
+        </transition>
         <div class="todo-list">
             <div class="item" :class="{'show' : item.show}" v-for="(item, index) in todoList" :key="index">
                 <div class="item-checkbox">
@@ -102,6 +109,8 @@
 </template>
 
 <script>
+import gsap from 'gsap';
+
 export default{
     data: () => {
         return {
@@ -112,6 +121,7 @@ export default{
             showCompletedList: false,
         }
     },
+
     methods: {
         addItem(){
             if(this.entry !== ''){
@@ -181,8 +191,28 @@ export default{
                 item.show = true;
             }, 500);
         }
+    },
+
+    setup() {
+    const beforeEnter = (el) => {
+      console.log('before enter - set initial state')
+      el.style.transform = 'translateY(-60px)'
+      el.style.opacity = 0
     }
-
-
+    const enter = (el, done) => {
+      console.log('starting to enter - make transition')
+      gsap.to(el, {
+        y: 0, 
+        duration: 1,
+        opacity: 1,
+        ease: 'bounce.out',
+        onComplete: done
+      })
+    }
+    const afterEnter = () => {
+      console.log('after enter')
+    }
+    return { beforeEnter, enter, afterEnter}
+  }
 }
 </script>
